@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "ts-node index.ts"
+    "blink": "ts-node blink.ts",
+    "echo": "ts-node echo.ts"
   },
   "author": "",
   "license": "MIT",
