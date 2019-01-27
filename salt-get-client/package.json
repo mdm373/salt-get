@@ -4,14 +4,12 @@
   "description": "Raspberry Pi Client for Measuring Levels",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "blink": "ts-node blink.ts",
     "echo": "ts-node echo.ts"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "onoff": "^3.2.2",
     "pigpio": "^1.2.1",
     "rxjs": "^6.3.3",
     "ts-node": "^8.0.2",
@@ -19,7 +17,6 @@
   },
   "devDependencies": {
     "@types/node": "^10.12.18",
-    "@types/onoff": "^3.2.1",
     "@types/pigpio": "^1.2.0"
   }
 }
