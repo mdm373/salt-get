@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "node tasks/clean",
     "build": "npm run clean && tsc",
-    "default": "npm run build && node dist/index run -i 100"
+    "default": "npm run build && node dist/index run -i 1000 "
   },
   "repository": "https://github.com/mdm373/salt-get/tree/master/salt-get-client",
   "files": [
