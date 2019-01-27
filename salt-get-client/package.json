@@ -1,22 +1,33 @@
 {
   "name": "salt-get-client",
   "version": "0.0.0",
-  "description": "Raspberry Pi Client for Measuring Levels",
+  "description": "Raspberry Pi Client for Measuring Distance",
   "main": "index.js",
   "scripts": {
-    "blink": "ts-node blink.ts",
-    "echo": "ts-node echo.ts"
+    "clean": "node tasks/clean",
+    "build": "npm run clean && tsc",
+    "default": "npm run build && node dist/index run -i 100"
   },
-  "author": "",
+  "repository": "https://github.com/mdm373/salt-get/tree/master/salt-get-client",
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "bin": {
+    "salt-get": "./bin/salt-get"
+  },
+  "author": "Mark Mayer",
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.19.0",
     "pigpio": "^1.2.1",
-    "rxjs": "^6.3.3",
-    "ts-node": "^8.0.2",
-    "typescript": "^3.2.4"
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {
+    "typescript": "^3.2.4",
+    "@types/commander": "^2.12.2",
     "@types/node": "^10.12.18",
-    "@types/pigpio": "^1.2.0"
+    "@types/pigpio": "^1.2.0",
+    "rimraf": "^2.6.3"
   }
 }
