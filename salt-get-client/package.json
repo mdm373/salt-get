@@ -12,12 +12,14 @@
   "license": "MIT",
   "dependencies": {
     "onoff": "^3.2.2",
+    "pigpio": "^1.2.1",
     "rxjs": "^6.3.3",
     "ts-node": "^8.0.2",
     "typescript": "^3.2.4"
   },
   "devDependencies": {
     "@types/node": "^10.12.18",
-    "@types/onoff": "^3.2.1"
+    "@types/onoff": "^3.2.1",
+    "@types/pigpio": "^1.2.0"
   }
 }
