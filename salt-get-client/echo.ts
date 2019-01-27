@@ -19,8 +19,15 @@ const getIo = (num: number, dir: Direction, edge: boolean) => {
 const trigger = getIo(5, 'out', false);
 const echo = getIo(6, 'in', true);
 
+let start: number = 0;
 echo.watch.subscribe((value) => {
-  console.log('echo: ' + value);
+  if(value){
+    start = (new Date()).getTime();
+  } else if(start > 0) {
+    const duration = (new Date()).getTime() - start;
+    console.log(duration);
+    start = 0;
+  }
 });
 (async () => {
   await trigger.write(1);
