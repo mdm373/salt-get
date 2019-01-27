@@ -19,6 +19,7 @@ program.command("run")
     timer(interval, interval).pipe(
       switchMap( () => from(getDistance())),
     ).subscribe((distance) => {
+      console.clear();
       console.log("distance", distance);
     });
   });
