@@ -17,7 +17,7 @@
     "apis": {
       "custom": {
         "endpoint": {
-          "sourceDir": "lambda/custom",
+          "sourceDir": "lambda/custom/dist",
           "uri": "ask-custom-salt-get-default"
         }
       }

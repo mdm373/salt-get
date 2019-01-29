@@ -20,10 +20,10 @@
             ],
             "arn": "arn:aws:lambda:us-east-1:726826185741:function:ask-custom-salt-get-default",
             "awsRegion": "us-east-1",
-            "codeUri": "lambda/custom",
+            "codeUri": "lambda/custom/dist",
             "functionName": "ask-custom-salt-get-default",
             "handler": "index.handler",
-            "revisionId": "cbe79eb7-f71b-4eb7-9153-8dfc499ba1a8",
+            "revisionId": "89cce71e-29b1-48af-945b-0022e1c27424",
             "runtime": "nodejs8.10"
           }
         ]
