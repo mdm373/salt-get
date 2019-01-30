@@ -1,0 +1,20 @@
+{
+    "linterOptions": {
+        "exclude": [
+            "dist",
+            "node_modules"
+        ]
+    },
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "interface-name": [false],
+        "semicolon": [true, "never"],
+        "quotemark": [true, "single"],
+        "no-console": [false]
+    },
+    "rulesDirectory": []
+}
