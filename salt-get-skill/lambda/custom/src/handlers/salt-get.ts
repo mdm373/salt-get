@@ -5,7 +5,7 @@ import moment from 'moment'
 import {MetadataEntry} from '../../../../../salt-get-dynamo/dist/metadata-entry'
 import { skillTitle } from '../common/literals'
 
-const deviceNotFoundText = 'Ullgh, couldn\'t figure out where salt is need get'
+const deviceNotFoundText = 'Ullgh, I can\'t figure out where salt is need get'
 const dynamoClient = new DynamoDB.DocumentClient()
 const deviceId = process.env.DEVICE_ID
 if (!deviceId) {
@@ -15,7 +15,7 @@ if (!deviceId) {
 const getSpeechText = (entry: MetadataEntry) => {
   const percent = Number(entry.percent * 100).toFixed(0)
   const ago = moment(entry.lastUpdated).fromNow()
-  return `You have ${percent}% of salt left as of ${ago}`
+  return `You have ${percent}% left as of ${ago}`
 }
 
 export const saltGetIntentHandler: RequestHandler = {
