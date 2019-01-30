@@ -1,15 +1,14 @@
-# Build An Alexa Hello World Skill
-<img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
+# Salt Get Skill
+> Built with ASK CLI
 
-### This is a simple tutorial to introduce a simple Alexa skill and code.
+## Set Up
 
-This tutorial will walk first-time Alexa skills developers through all the required steps involved in creating a skill using this hello world template, called ‘hello world’. This post assumes you have some familiarity with JavaScript/Node.js (or a similar programming language) and the Alexa Skills Kit.
-
-If this is your first time here, you're new to Alexa Skills Development, or you're looking for more detailed instructions, click the **Get Started** button below:
-
-[![Get Started](https://camo.githubusercontent.com/db9b9ce26327ad3bac57ec4daf0961a382d75790/68747470733a2f2f6d2e6d656469612d616d617a6f6e2e636f6d2f696d616765732f472f30312f6d6f62696c652d617070732f6465782f616c6578612f616c6578612d736b696c6c732d6b69742f7475746f7269616c732f67656e6572616c2f627574746f6e732f627574746f6e5f6765745f737461727465642e5f5454485f2e706e67)](./instructions/1-voice-user-interface.md)
-
-Or click [here](./instructions/7-cli.md) for instructions using the ASK CLI (command line interface).
+* Build Ask Get Dynamo Project for dynamo dependencies. 
+* Run ask deploy for first time deployment
+* Grant lambda IAM role dynamodb read access
+* Set lambda environment variable "DEVICE_ID" to any unique value matching device id assigned in salt get client environment
+* From custom/lambda run "npm run deploy" to build and upload skill lambda
+* Click [here](./instructions/7-cli.md) for instructions using the ASK CLI (command line interface).
 
 ## Additional Resources
 

@@ -18,7 +18,11 @@
         {
           "name": "SaltGetIntent",
           "samples": [
-            "how much salt is left"
+            "how much salt is left",
+            "whats left",
+            "do i need salt",
+            "why so salty",
+            "what's up"
           ]
         }
       ]
