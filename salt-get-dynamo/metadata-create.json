@@ -1,0 +1,20 @@
+{
+  "TableName": "salt-get-metadata", 
+  "AttributeDefinitions": [
+      { "AttributeName": "deviceId",  "AttributeType": "S" }
+  ], 
+  "KeySchema": [
+      { "AttributeName": "deviceId",  "KeyType": "HASH" }
+  ], 
+  "ProvisionedThroughput": {
+      "ReadCapacityUnits": 10, 
+      "WriteCapacityUnits": 10
+  }, 
+  "StreamSpecification": {
+      "StreamEnabled": true, 
+      "StreamViewType": "KEYS_ONLY"
+  }, 
+  "SSESpecification": {
+      "Enabled": true
+  }
+}
