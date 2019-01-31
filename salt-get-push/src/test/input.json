@@ -1,0 +1,9 @@
+{
+ "$schema": "../../../salt-get-dynamo/dist/history.schema.json#",
+ "deviceId": "test-house",
+ "distanceCurrent": 100,
+ "distanceMax": 150,
+ "distanceMin": 50,
+ "percent": 0.3333,
+ "timestamp": "2019-01-31T05:13:14.621Z"
+}
