@@ -25,6 +25,7 @@
     "commander": "^2.19.0",
     "cron": "^1.6.0",
     "fast-stats": "0.0.5",
+    "pigpio": "^1.2.1",
     "rxjs": "^6.3.3"
   },
   "devDependencies": {
