@@ -8,8 +8,12 @@ Requires nodejs / npm
 
 ### Pi
 
+* install pigpio
+  * ``sudo apt-get update`` 
+  * ``sudo apt-get install pigpio``
 * install/update nodejs via: https://github.com/nodesource/distributions#deb
 * clone this repo, open client dir
-* install locally ``sudo npm install``
-* install globally ``sudo npm install -g``
+* install locally: ``sudo npm install --unsafe-perm``
+* build: ``sudo npm run build``
+* install globally: ``sudo npm install --unsafe-perm -g``
 

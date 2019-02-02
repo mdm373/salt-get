@@ -7,7 +7,9 @@ export interface RunCommand {
   readonly max: number,
   readonly deviceId: string,
   readonly stndDv: number,
-  readonly readCount: number
+  readonly readCount: number,
+  readonly awsSecret: string,
+  readonly awsKey: string,
 }
 
 export const getCommand = (input: any) => {
@@ -20,6 +22,8 @@ export const getCommand = (input: any) => {
     min: Number(input.min || '10'),
     readCount: Number(input.readCount || '30'),
     stndDv: Number(input.stndDv || '1'),
+    awsKey: input.awsKey || process.env.AWS_KEY,
+    awsSecret: input.awsSecret || process.env.AWS_SECRET,
     consoleMode: !!input.consoleMode,
   }
   if (cmd.triggerPin < 3 || cmd.triggerPin > 40) {
@@ -36,6 +40,9 @@ export const getCommand = (input: any) => {
   }
   if (cmd.readCount < 1) {
     throw new Error('invalid burst read count')
+  }
+  if (!cmd.awsKey || !cmd.awsSecret) {
+    throw new Error('invalid credentials')
   }
   return cmd
 }
