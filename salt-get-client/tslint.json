@@ -5,8 +5,11 @@
     ],
     "jsRules": {},
     "rules": {
-        "interface-name": [true, "never-prefix"],
-        "no-console": [false]
+        "interface-name": [false],
+        "semicolon": [true, "never"],
+        "quotemark": [true, "single"],
+        "no-console": [false],
+        "object-literal-sort-keys": [false]
     },
     "rulesDirectory": []
 }

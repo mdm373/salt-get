@@ -5,13 +5,13 @@ const dynamoClient = new DynamoDB.DocumentClient()
 
 export const handler = async (request: HistoryEntry) => {
   if (request.distanceMax <= request.distanceMin) {
-    throw new Error('invalid bounds in reading')
+    throw new Error('invalid bounds')
   }
   if (request.distanceCurrent > request.distanceMax || request.distanceCurrent < request.distanceMin ) {
-    throw new Error('invalid current in reading')
+    throw new Error('out of bounds')
   }
   if (request.distanceMax < 0 || request.distanceCurrent < 0 || request.distanceMin < 0) {
-    throw new Error('invalid sign in reading')
+    throw new Error('negitive bounds')
   }
   const actualTime = new Date()
   const actualTimestamp = actualTime.toISOString()

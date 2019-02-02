@@ -4,9 +4,11 @@
   "description": "Raspberry Pi Client for Measuring Distance",
   "main": "index.js",
   "scripts": {
-    "clean": "node tasks/clean",
-    "build": "npm run clean && tsc",
-    "default": "npm run build && node dist/index run -i 1000 "
+    "clear-dist": "node ./tasks/clean",
+    "compile": "tsc",
+    "build": "run-s clear-dist compile",
+    "default": "npm run build && node dist/index run -i 1000",
+    "test": "node dist/index run -d test-thing -c \"0/1 * * * * *\""
   },
   "repository": "https://github.com/mdm373/salt-get/tree/master/salt-get-client",
   "files": [
@@ -19,15 +21,19 @@
   "author": "Mark Mayer",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.395.0",
     "commander": "^2.19.0",
-    "pigpio": "^1.2.1",
+    "cron": "^1.6.0",
+    "fast-stats": "0.0.5",
     "rxjs": "^6.3.3"
   },
   "devDependencies": {
-    "typescript": "^3.2.4",
     "@types/commander": "^2.12.2",
-    "@types/node": "^10.12.18",
+    "@types/cron": "^1.6.0",
+    "@types/node": "^10.12.21",
     "@types/pigpio": "^1.2.0",
-    "rimraf": "^2.6.3"
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.2.4"
   }
 }
