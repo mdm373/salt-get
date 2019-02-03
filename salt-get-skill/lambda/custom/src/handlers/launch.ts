@@ -1,16 +1,16 @@
 import { RequestHandler } from 'ask-sdk-core'
 import { skillTitle } from '../common/literals'
+import { getSaltQueryText } from '../common/salt-request'
 
 export const launchRequestHandler: RequestHandler = {
   canHandle: (handlerInput) => {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
   },
-  handle: (handlerInput) => {
-    const speechText = 'Welcome to salt get. Wondering if salt is need get?'
+  handle: async (handlerInput) => {
+    const speechText = await getSaltQueryText()
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
       .withSimpleCard(skillTitle, speechText)
       .getResponse()
   },
