@@ -10,7 +10,7 @@
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "888fa42c93545f326558561080c365be"
+            "eTag": "fd4a3cda74117d89bf3f3aa55ff6c595"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom/dist",
             "functionName": "ask-custom-salt-get-default",
             "handler": "index.handler",
-            "revisionId": "8ef1bbd9-5f36-4718-87ea-422cb9a952be",
+            "revisionId": "94f5740c-ff64-4f96-aaad-f6bee1d9c47e",
             "runtime": "nodejs8.10"
           }
         ]

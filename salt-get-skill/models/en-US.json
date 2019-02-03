@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "salt get",
+      "invocationName": "osha",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",

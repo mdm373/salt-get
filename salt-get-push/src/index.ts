@@ -16,17 +16,18 @@ export const handler = async (request: HistoryEntry) => {
   const actualTime = new Date()
   const actualTimestamp = actualTime.toISOString()
   const actualPercent = (request.distanceCurrent - request.distanceMin) / (request.distanceMax - request.distanceMin)
+  const trunkatedPercent = Number(actualPercent.toFixed(3))
   const newMetadata: MetadataEntry = {
     deviceId: request.deviceId,
     lastUpdated: actualTimestamp,
-    percent: actualPercent,
+    percent: trunkatedPercent,
   }
   const newHistory: HistoryEntry = {
     deviceId: request.deviceId,
     distanceCurrent: request.distanceCurrent,
     distanceMax: request.distanceMax,
     distanceMin: request.distanceMin,
-    percent: actualPercent,
+    percent: trunkatedPercent,
     timestamp: actualTimestamp,
   }
   await Promise.all([
