@@ -22,7 +22,11 @@
 
 ### example rc.local script
 ```
-sudo forever start -c sh -l /home/pi/salt-get.forever.log -o /home/pi/salt-get.out.log -e /home/pi/salt-get.error.log /home/pi/salt-get.sh
+sudo rm -f /home/pi/salt-get/run/forever.log
+sudo rm -f /home/pi/salt-get/run/out.log
+sudo rm -f /home/pi/salt-get/run/error.log
+sudo forever start -c sh -l /home/pi/salt-get/run/forever.log -o /home/pi/salt-get/run/out.log -e /home/pi/salt-get/run/error.log /home/pi/salt-get/run/salt-get.sh
+
 ```
 
 ### example salt-get.sh

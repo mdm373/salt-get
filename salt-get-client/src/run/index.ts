@@ -17,6 +17,8 @@ const getDistances = async (count: number, getDistance: () => Promise<number>) =
   return distances.filter((distance) => distance > 0)
 }
 
+const eventId = 'run-iteration'
+
 const getAvtMean = (distances: number[], stdDevs: number) => {
   const stats = new Stats()
   stats.push(distances)
@@ -32,10 +34,9 @@ export const run = async (command: RunCommand) => {
   const getDistance = getDistanceMeasurer(command.triggerPin, command.echoPin)
   new CronJob(command.cron, async () => {
     try {
-      console.log('running command as scheduled', new Date().toISOString())
+      const time = new Date().toISOString()
       const distances = await getDistances(command.readCount, getDistance)
       const avtMean = getAvtMean(distances, command.stndDv)
-      console.log({avtMean})
       const normalizedMean = Math.max(Math.min(avtMean, command.max), command.min)
       const historyEntry: any = {
         deviceId: command.deviceId,
@@ -43,13 +44,12 @@ export const run = async (command: RunCommand) => {
         distanceMax: command.max,
         distanceMin: command.min,
       }
-      console.log({historyEntry})
       if (!command.consoleMode) {
         const credentials = new Credentials({accessKeyId: command.awsKey, secretAccessKey: command.awsSecret})
-        const pushResponse = await invokeLambda('salt-get-push', historyEntry, credentials)
-        console.log({pushResponse})
+        const pushResponse = await invokeLambda('salt-get-push', historyEntry, credentials, false)
+        console.log(time, eventId, avtMean, pushResponse)
       } else {
-        console.log('push skipped for console mode')
+        console.log(time, eventId, avtMean)
       }
     } catch (error) {
       console.error('error running scheduled command', error)

@@ -1,6 +1,6 @@
 import {Credentials, Lambda} from 'aws-sdk'
 
-export const invokeLambda = async <T>(funcName: string, event: any, credentials: Credentials) => {
+export const invokeLambda = async <T>(funcName: string, event: any, credentials: Credentials, isLogged: boolean) => {
   const lambda = new Lambda({credentials, region: 'us-east-1'})
   const request: Lambda.InvocationRequest = {
       FunctionName: funcName,
@@ -9,7 +9,7 @@ export const invokeLambda = async <T>(funcName: string, event: any, credentials:
       Payload: JSON.stringify(event),
     }
   const result = await lambda.invoke(request).promise()
-  if (result.LogResult) {
+  if (result.LogResult && isLogged) {
     const logs = Buffer.from(result.LogResult, 'base64').toString('UTF-8')
     console.log('lambda log', logs)
   }

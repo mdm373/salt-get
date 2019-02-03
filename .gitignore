@@ -62,3 +62,5 @@ typings/
 .next
 
 env-secret.bat
+*.zip
+run/
