@@ -7,7 +7,7 @@ export const launchRequestHandler: RequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
   },
   handle: async (handlerInput) => {
-    const speechText = await getSaltQueryText()
+    const speechText = await getSaltQueryText(true)
 
     return handlerInput.responseBuilder
       .speak(speechText)
