@@ -17,7 +17,7 @@ export const getCommand = (input: any) => {
     deviceId: input.deviceId,
     cron: input.cron || '0 0 12 * *',
     echoPin: Number(input.echoPin || '15'),
-    triggerPin: Number(input.echoPin || '14'),
+    triggerPin: Number(input.triggerPin || '14'),
     max: Number(input.max || '30'),
     min: Number(input.min || '10'),
     readCount: Number(input.readCount || '30'),
