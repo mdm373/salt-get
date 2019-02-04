@@ -3,7 +3,7 @@
 
 ## Set Up
 
-* Build Ask Get Dynamo Project for dynamo dependencies. 
+* Build salt-get-dynamo Project for dynamo dependencies. 
 * Run ask deploy for first time deployment
 * Grant lambda IAM role dynamodb read access
 * Set lambda environment variable "DEVICE_ID" to any unique value matching device id assigned in salt get client environment
