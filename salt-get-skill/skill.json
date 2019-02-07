@@ -5,9 +5,9 @@
         "en-US": {
           "summary": "Find out how much salt is left",
           "examplePhrases": [
-            "Alexa ask salt get how much salt is left"
+            "Alexa ask osha how much salt is left"
           ],
-          "name": "salt get",
+          "name": "osha",
           "description": "A fun maker project so I can stop forgetting to refill salt every so often"
         }
       },

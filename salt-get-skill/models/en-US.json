@@ -16,6 +16,31 @@
           "samples": []
         },
         {
+          "name": "NotificationSetIntent",
+          "slots" : [{
+            "name": "threshold",
+            "type": "AMAZON.NUMBER"
+          }],
+          "samples": [
+            "text me when I run low on salt",
+            "text me when I'm running low",
+            "text me",
+            "notify me when i run low on salt",
+            "notify me when I'm running low",
+            "notify me",
+            "let me know when I run low on salt",
+            "let me know when I'm running low",
+            "let me know when I go below {threshold} percent",
+            "let me know when I go below {threshold} percent of salt left",
+            "let me know when I only have {threshold} percent of salt left",
+            "let me know when I have less than {threshold} percent of salt left",
+            "text me when I go below {threshold} percent",
+            "text me when I go below {threshold} percent of salt left",
+            "text me when I only have {threshold} percent of salt left",
+            "text me when I have less than {threshold} percent of salt left"
+          ]
+        },
+        {
           "name": "SaltGetIntent",
           "samples": [
             "how much salt is left",
@@ -29,3 +54,5 @@
     }
   }
 }
+
+

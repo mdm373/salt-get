@@ -24,3 +24,23 @@ export const getSaltQueryText = async (isComplex: boolean = false) => {
   }).promise()).Items as MetadataEntry[] || []
   return results.length > 0 ? getSpeechText(results[0], isComplex) : deviceNotFoundText
 }
+
+const getNotificationTextForEntry = async (entry: MetadataEntry, threshold?: number) => {
+  const updatedThreshold = threshold ? threshold : entry.thresholdPercent * 100
+  const updated = {...entry, ...{wasNotified: false, thresholdPercent: updatedThreshold / 100 } }
+  const percent = updatedThreshold.toFixed(0)
+  await dynamoClient.put({
+    Item: updated,
+    TableName: 'salt-get-metadata',
+  }).promise()
+  return `Sure thing. I\'ll let you know when you're down to ${percent}% of salt left`
+}
+
+export const getNotificationUpdateText = async (threshold?: number) => {
+  const results = (await dynamoClient.query({
+    ExpressionAttributeValues: {':deviceId': deviceId},
+    KeyConditionExpression: 'deviceId = :deviceId',
+    TableName: 'salt-get-metadata',
+  }).promise()).Items as MetadataEntry[] || []
+  return results.length > 0 ? (await getNotificationTextForEntry(results[0], threshold)) : deviceNotFoundText
+}
