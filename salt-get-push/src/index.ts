@@ -26,7 +26,7 @@ export const handler = async (request: HistoryEntry) => {
   }
   const actualTime = new Date()
   const actualTimestamp = actualTime.toISOString()
-  const actualPercent = (request.distanceCurrent - request.distanceMin) / (request.distanceMax - request.distanceMin)
+  const actualPercent =  1.0 - (request.distanceCurrent - request.distanceMin) / (request.distanceMax - request.distanceMin)
   const trunkatedPercent = Number(actualPercent.toFixed(3))
   const existing = await getExistingMetadata(request.deviceId)
   const wasNotified = existing && existing.wasNotified || false
