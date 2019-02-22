@@ -5,4 +5,5 @@ export interface HistoryEntry {
   distanceCurrent: number
   distanceMax: number
   distanceMin: number
+  ttl: number
 }
