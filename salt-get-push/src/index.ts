@@ -1,6 +1,7 @@
 import { DynamoDB, SNS } from 'aws-sdk'
 import {HistoryEntry} from '../../salt-get-dynamo/dist/history-entry'
 import {MetadataEntry} from '../../salt-get-dynamo/dist/metadata-entry'
+import {default as moment} from 'moment'
 
 const dynamoClient = new DynamoDB.DocumentClient()
 const sns = new SNS()
@@ -49,6 +50,7 @@ export const handler = async (request: HistoryEntry) => {
     distanceMin: request.distanceMin,
     percent: trunkatedPercent,
     timestamp: actualTimestamp,
+    ttl: moment().add(90, 'days').unix(),
   }
   await Promise.all([
     dynamoClient.put({ TableName: 'salt-get-metadata', Item: newMetadata }).promise(),
