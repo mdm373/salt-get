@@ -1,8 +1,0 @@
-{
-  "FunctionName": "salt-get-push", 
-  "Runtime": "nodejs8.10", 
-  "Role": "YOUR ARN HERE", 
-  "Handler": "index.handler", 
-  "Description": "", 
-  "Publish": true
-}
