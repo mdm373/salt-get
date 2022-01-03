@@ -36,8 +36,8 @@ def ping_distance():
         sig = while_signal(ECHO, gpio.HIGH)
 
         gpio.cleanup()
-        tl = sig - no_sig
-        distance = tl / 0.000058
+        duration = sig - no_sig
+        distance = round(duration * 17150, 2)
         return distance
     except Exception as e:
         print(e)
