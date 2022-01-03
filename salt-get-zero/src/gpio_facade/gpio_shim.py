@@ -7,6 +7,8 @@ class GpioShim:
     BOARD = "BOARD"
     OUT = "OUT"
     IN = "IN"
+    LOW = 0
+    HIGH = 1
 
     @staticmethod
     def setmode(mode):

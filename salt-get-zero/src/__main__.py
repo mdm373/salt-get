@@ -14,13 +14,18 @@ def ping_distance():
         gpio.setup(TRIGGER, gpio.OUT)
         gpio.setup(ECHO, gpio.IN)
 
-        gpio.output(TRIGGER, False)
+        gpio.output(TRIGGER, gpio.LOW)
+        time.sleep(0.1)
+        gpio.output(TRIGGER, gpio.HIGH)
+        time.sleep(0.00001)
+        gpio.output(TRIGGER, gpio.LOW)
+
         no_sig = time.time()
-        while gpio.input(ECHO) == 0:
+        while gpio.input(ECHO) == gpio.LOW:
             no_sig = time.time()
 
         sig = time.time()
-        while gpio.input(ECHO) == 1:
+        while gpio.input(ECHO) == gpio.HIGH:
             sig = time.time()
 
         gpio.cleanup()
