@@ -28,6 +28,7 @@ def ping_distance():
         distance = tl / 0.000058
         return distance
     except Exception as e:
+        print(e)
         gpio.cleanup()
         raise e
 
