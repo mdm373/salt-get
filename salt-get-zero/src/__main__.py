@@ -22,7 +22,7 @@ def while_signal(pin, value):
 
 def ping_distance():
     try:
-        gpio.setmode(gpio.BOARD)
+        gpio.setmode(gpio.BCM)
         gpio.setup(TRIGGER, gpio.OUT)
         gpio.setup(ECHO, gpio.IN)
 

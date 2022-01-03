@@ -5,6 +5,7 @@ class GpioShim:
     in_value = 0
 
     BOARD = "BOARD"
+    BCM = "BCM"
     OUT = "OUT"
     IN = "IN"
     LOW = 0
