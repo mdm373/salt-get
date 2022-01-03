@@ -2,19 +2,25 @@ from gpio_facade import gpio_instance as gpio
 import time
 
 
+# pin 14 - Trigger
+# pin 15 - Echo
+TRIGGER = 14
+ECHO = 15
+
+
 def ping_distance():
     try:
         gpio.setmode(gpio.BOARD)
-        gpio.setup(12, gpio.OUT)
-        gpio.setup(16, gpio.IN)
+        gpio.setup(TRIGGER, gpio.OUT)
+        gpio.setup(ECHO, gpio.IN)
 
-        gpio.output(12, False)
+        gpio.output(TRIGGER, False)
         no_sig = time.time()
-        while gpio.input(16) == 0:
+        while gpio.input(ECHO) == 0:
             no_sig = time.time()
 
         sig = time.time()
-        while gpio.input(16) == 1:
+        while gpio.input(ECHO) == 1:
             sig = time.time()
 
         gpio.cleanup()
