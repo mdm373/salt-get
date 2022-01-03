@@ -4,8 +4,8 @@ import time
 
 # pin 14 - Trigger
 # pin 15 - Echo
-TRIGGER = 14
-ECHO = 15
+TRIGGER = 23
+ECHO = 24
 
 
 def ping_distance():
