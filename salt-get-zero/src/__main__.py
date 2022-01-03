@@ -9,8 +9,8 @@ def optional_environ(name, default):
 
 if __name__ == "__main__":
     load_dotenv()
-    trigger_pin = optional_environ("TRIGGER_PIN", 23)
-    echo_pin = optional_environ("ECHO_PIN", 24)
+    trigger_pin = int(optional_environ("TRIGGER_PIN", 23))
+    echo_pin = int(optional_environ("ECHO_PIN", 24))
     read_count = int(optional_environ("READ_COUNT", 5))
 
     if read_count <= 0:
