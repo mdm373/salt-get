@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "848113a6-2d38-430a-9e9e-84472e80cab9",
+		"name": "Salt Get API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Update Measurement",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"distance\": 29}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SALTY_HOST}}/distance",
+					"host": [
+						"{{SALTY_HOST}}"
+					],
+					"path": [
+						"distance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Measurement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SALTY_HOST}}/distance?limit=100",
+					"host": [
+						"{{SALTY_HOST}}"
+					],
+					"path": [
+						"distance"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
