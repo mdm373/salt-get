@@ -6,3 +6,4 @@ py -3 -m pip install -U flask -U
 py -3 -m pip install -U Flask-RESTful
 py -3 -m pip install -U marshmallow
 py -3 -m pip install -U pypika
+py -3 -m pip install -U python-dotenv

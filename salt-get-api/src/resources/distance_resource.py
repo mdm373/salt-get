@@ -44,7 +44,8 @@ class DistanceResource(Resource):
         con = None
         try:
             con = make_connection()
-            distances = select_distances(con)
+            limit = int("limit" in request.args and request.args["limit"] or "100")
+            distances = select_distances(con, limit)
             data = []
             for distance in distances:
                 data.append(self.schema.dump(distance))

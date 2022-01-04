@@ -12,8 +12,8 @@ load_dotenv()
 trigger_pin = int(optional_environ("TRIGGER_PIN", "23"))
 echo_pin = int(optional_environ("ECHO_PIN", "24"))
 read_count = int(optional_environ("READ_COUNT", "5"))
-api_host = optional_environ("API_HOST", "saltypi")
-api_port = int(optional_environ("API_PORT", "80"))
+api_host = optional_environ("API_HOST", "localhost")
+api_port = int(optional_environ("API_PORT", "5000"))
 
 if read_count <= 0:
     raise Exception(f"invalid Read count {read_count} configured")

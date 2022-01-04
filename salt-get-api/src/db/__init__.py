@@ -1,6 +1,6 @@
 from sqlite3 import connect, Row
 from util import optional_environ
-from pypika import Query, Table
+from pypika import Query, Table, Order
 from model import DistanceModel
 
 DISTANCES = Table("distances")
@@ -19,8 +19,13 @@ def make_connection():
     return con
 
 
-def select_distances(con):
-    statement = Query.from_(DISTANCES).select(DISTANCES.distance, DISTANCES.timestamp).get_sql()
+def select_distances(con, limit):
+    statement = Query.from_(DISTANCES) \
+        .select(DISTANCES.distance, DISTANCES.timestamp) \
+        .orderby('timestamp', order=Order.desc) \
+        .limit(limit) \
+        .get_sql()
+
     distances = []
     for row in con.cursor().execute(statement):
         distances.append(row_as_model(row))
