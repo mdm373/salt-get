@@ -1,1 +1,1 @@
-python ./src/gen-schema
+python ./src/gen_schema.py
