@@ -1,4 +1,4 @@
-from api_client import make_client
+from api_client import ApiClient
 from dotenv import load_dotenv
 import os
 from state import read_state, write_state, ALERTED_FOR_LEVEL, update_state_alert_level
@@ -9,23 +9,13 @@ def optional_environ(name, default):
     return default if name not in os.environ else os.environ[name]
 
 
-def required_environ(name):
-    if name not in os.environ:
-        raise Exception(f"required env var {name} not defined")
-    return os.environ[name]
-
-
 load_dotenv()
 
 api_host = optional_environ("API_HOST", "localhost")
 api_port = int(optional_environ("API_PORT", "5000"))
-warn_distance = float(optional_environ("WARNING_DISTANCE", "30"))
-webhook_url = required_environ("WEBHOOK_URL")
-recover_delta = float(optional_environ("RECOVER_DELTA", "10"))
 
-client = make_client(api_host, api_port)
+client = ApiClient(api_host, api_port)
 state = read_state()
-webhook = make_webhook(webhook_url)
 
 
 def get_msg_data(dist):
@@ -52,7 +42,7 @@ def handle_recovery(current_distance):
 
     dist = current_distance["distance"]
     delta = alerted - dist
-    if delta < recover_delta:
+    if delta < recovery_delta:
         return
 
     if dist > warn_distance:
@@ -66,7 +56,15 @@ def handle_recovery(current_distance):
 
 
 try:
-    measurements = client(1)
+    settings = client.get_settings()
+    webhook_url = settings["webhook_url"]
+    if webhook_url is None:
+        raise Exception("Settings Webhook URL Not Configured")
+
+    recovery_delta = float(settings["recovery_delta"])
+    webhook = make_webhook(webhook_url)
+    warn_distance = float(settings["warn_at"])
+    measurements = client.get_distance(1)
     newer = measurements and len(measurements) > 0 and measurements[0] or None
     if not newer or 'distance' not in newer:
         webhook("😿  Salty Pi failed to get latest measurement info")
@@ -79,6 +77,3 @@ except Exception as e:
     print(f"Failed: {e}")
     webhook("🔥  Salty Pi is On Fire, check out the logs.")
     raise e
-
-
-

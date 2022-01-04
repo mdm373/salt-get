@@ -6,13 +6,13 @@
 	},
 	"item": [
 		{
-			"name": "Update Measurement",
+			"name": "Add Measurement",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"distance\": 29}",
+					"raw": "{\"distance\": 51}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,7 +37,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{SALTY_HOST}}/distance?limit=100",
+					"raw": "{{SALTY_HOST}}/distance?limit=2",
 					"host": [
 						"{{SALTY_HOST}}"
 					],
@@ -47,8 +47,51 @@
 					"query": [
 						{
 							"key": "limit",
-							"value": "100"
+							"value": "2"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Settings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SALTY_HOST}}/settings",
+					"host": [
+						"{{SALTY_HOST}}"
+					],
+					"path": [
+						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Settings",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"warn_at\": 50,\r\n    \"recovery_delta\": 8.5,\r\n    \"webhook_url\": \"{{SALTY_WEBHOOK_URL}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SALTY_HOST}}/settings",
+					"host": [
+						"{{SALTY_HOST}}"
+					],
+					"path": [
+						"settings"
 					]
 				}
 			},

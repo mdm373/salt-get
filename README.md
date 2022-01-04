@@ -15,7 +15,7 @@ Each module installs via `sudo sh ./scripts/install.sh`, run from the module dir
 
 Salt Get API Requires DB schema generation prior to running `sh ./scripts/gen-schema.sh` (also from module dir)
 
-Each module configured via `.env` after installing. Monitor module requires valid web-hook URL.
+Each module configured via `.env` after installing. By default, modules communicate on `localhost:5000`
 
 Add the following cron-tabs after installing and reboot (`sudo crontab -e`)
 
@@ -24,6 +24,17 @@ Add the following cron-tabs after installing and reboot (`sudo crontab -e`)
 0 10 * * * cd /home/pi/salt-get/salt-get-measure && sh ./scripts/cron_task.sh > /var/log/salt-get-measure.log 2>&1
 0 11 * * * cd /home/pi/salt-get/salt-get-monitor && sh ./scripts/cron_task.sh > /var/log/salt-get-monitor.log 2>&1
 ```
+
+
+## Settings
+
+Settings maintained via settings API's.`webhook_url` must be set before monitoring can post updates
+
+See Postman collection at `./salt-get-api/postman_collection.json` for update / read settings examples.
+
+* `webhook_url`: URL to post notifications to via monitoring
+* `warn_at`: distance that, once reached, monitoring will get salty over
+* `recovery_delta`: delta that, when distance is reduced by, monitoring will no longer be salty
 
 ## Modules
 
