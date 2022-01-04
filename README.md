@@ -28,7 +28,7 @@ Add the following cron-tabs after installing and reboot (`sudo crontab -e`)
 
 ## Settings
 
-Settings maintained via settings API's.`webhook_url` must be set before monitoring can post updates
+Settings maintained via settings API's. `webhook_url` must be set before monitoring can post updates
 
 See Postman collection at `./salt-get-api/postman_collection.json` for update / read settings examples.
 
