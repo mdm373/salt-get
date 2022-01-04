@@ -1,1 +1,1 @@
-./scripts/measure.sh
+sh ./scripts/measure.sh

@@ -1,1 +1,1 @@
-./scripts/monitor.sh
+sh ./scripts/monitor.sh

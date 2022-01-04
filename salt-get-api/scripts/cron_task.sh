@@ -1,1 +1,1 @@
-./scripts/serve.sh
+sh ./scripts/serve.sh
