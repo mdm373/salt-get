@@ -26,7 +26,7 @@ class DistanceResource(Resource):
         try:
             con = make_connection()
             timestamp = int("timestamp" in request.args and request.args["timestamp"] or -1)
-            if timestamp is -1:
+            if timestamp == -1:
                 abort(HttpStatus.BAD_REQUEST)
             delete_distance(con, timestamp)
         except Exception as e:

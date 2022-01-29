@@ -29,7 +29,7 @@ def upsert_setting(con, key, value):
     current_value = None
     for row in con.cursor().execute(statement):
         current_value = row["value"]
-    if current_value is not None and current_value != value:
+    if current_value is not None:
         statement = Query.update(SETTINGS).set(SETTINGS.value, value).where(SETTINGS.key == key).get_sql()
         con.cursor().execute(statement)
         return

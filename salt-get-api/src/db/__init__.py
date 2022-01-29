@@ -1,7 +1,7 @@
 from sqlite3 import connect, Row
 from util import optional_environ
 from .settings import select_settings, update_settings
-from .distance import select_distances, insert_distance
+from .distance import select_distances, insert_distance, delete_distance
 
 
 def make_connection():
