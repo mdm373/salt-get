@@ -2,7 +2,7 @@ from flask_restful import Resource, abort
 from marshmallow import Schema, fields, ValidationError, post_load
 from flask import request
 from http import HTTPStatus
-from db import make_connection, select_distances, insert_distance
+from db import make_connection, select_distances, insert_distance, delete_distance
 from model import DistanceModel
 from time import time_ns
 
@@ -21,7 +21,19 @@ class DistanceSchema(Schema):
 
 class DistanceResource(Resource):
     schema = DistanceSchema()
-
+    def delete(self):
+        con = None
+        try:
+            con = make_connection()
+            timestamp = int("timestamp" in request.args and request.args["timestamp"] or -1)
+            if timestamp is -1:
+                abort(HttpStatus.BAD_REQUEST)
+            delete_distance(con, timestamp)
+        except Exception as e:
+            print(f"exception error: {e}")
+            abort(HTTPStatus.INTERNAL_SERVER_ERROR)
+        finally:
+            con is not None and con.close()
     def put(self):
         con = None
         try:

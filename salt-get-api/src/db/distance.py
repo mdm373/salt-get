@@ -27,3 +27,8 @@ def insert_distance(con, model):
     statement = Query.into(DISTANCES).columns('distance', 'timestamp').insert(model.distance, model.timestamp).get_sql()
     con.cursor().execute(statement)
     con.commit()
+
+def delete_distance(con, timestamp):
+    statement = Query.from_(DISTANCES).delete().where(DISTANCES.timestamp == timestamp).get_sql()
+    con.cursor().execute(statement)
+    con.commit()
