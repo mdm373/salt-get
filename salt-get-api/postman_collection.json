@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"distance\": 51}",
+					"raw": "{\"distance\": 2}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -78,7 +78,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"warn_at\": 50,\r\n    \"recovery_delta\": 8.5,\r\n    \"webhook_url\": \"{{SALTY_WEBHOOK_URL}}\"\r\n}",
+					"raw": "{\r\n    \"warn_at\": 45,\r\n    \"recovery_delta\": 5,\r\n    \"webhook_url\": \"{{SALTY_WEBHOOK_URL}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -92,6 +92,20 @@
 					],
 					"path": [
 						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Measurement",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "1641338373307",
+					"host": [
+						"1641338373307"
 					]
 				}
 			},
